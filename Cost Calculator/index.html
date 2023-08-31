@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator</title>
+    <script src="logics.js"></script>
+</head>
+
+<body>
+    <p><b>Press enter or click the calculate button to calculate the cost.</b></p>
+    <input id="js-order-value" placeholder="Order Value" onkeydown="handle_cost_input(event)">
+    <button onclick="calc()">Calculate</button>
+
+    <p>Shipping Cost : <shipping_cost>0</shipping_cost>
+    </p>
+    <p>Total Cost : <total_cost>0</total_cost>
+    </p>
+
+    <p><b>Keep entering the cost. The total cost will be calculated in real time.</b></p>
+    <input id="js-order-value_live" placeholder="Order Value" oninput="handle_cost_input2(event)">
+    <!-- <button onclick="calc()">Calculate</button> -->
+
+    <p>Shipping Cost : <shipping_cost_live>0</shipping_cost_live>
+    </p>
+    <p>Total Cost : <total_cost_live>0</total_cost_live>
+    </p>
+</body>
+
+</html>
