@@ -1,5 +1,5 @@
 
-// This function is called when the calculate button is pressed.
+// This function is called when the calculate button is pressed or Enter is pressed.
 
 function calc(){
     let total = Number(document.querySelector('#js-order-value').value);
@@ -14,6 +14,8 @@ function calc(){
 
     document.querySelector('total_cost').innerHTML = total; 
 }
+
+// This function is called to calculate the live price.
 
 function calc_live(){
     let total = Number(document.querySelector('#js-order-value_live').value);
