@@ -10,13 +10,28 @@
 </head>
 
 <body>
-    <!-- <b>Current Score</b>
+    <b>Current Score</b>
     <br>
     <br>
-    You : 0 &nbsp &nbsp Computer : 0
+    <div id="js-score">
+        <script>
+            const score = JSON.parse(localStorage.getItem('score')) || {
+                user_score: 0,
+                computer_score: 0,
+                tie: 0
+            };
+
+            let score_string = `You : ${score.user_score} &nbsp &nbsp Computer : ${score.computer_score} &nbsp &nbsp Tie: ${score.tie}`;
+            document.querySelector('#js-score').innerHTML = score_string;
+        </script>
+        <!-- You : 0 &nbsp &nbsp Computer : 0 &nbsp &nbsp Tie: 0 -->
+    </div>
     <br>
-    <br> -->
-    <b>Enter your choice</b>
+    <br>
+    <b>Play Now</b>
+    <br>
+    <br>
+    Enter your choice
     <br>
     <br>
     <button onclick="play('rock')">
@@ -30,12 +45,13 @@
     </button>
     <br>
     <br>
+    <b>Result</b>
+    <p id="js-result">Start playing</p>
+    <br>
     <button onclick="reset()">
         Reset Score
     </button>
-    <button onclick="view_score()">
-        View Score
-    </button>
+
 </body>
 
 </html>
