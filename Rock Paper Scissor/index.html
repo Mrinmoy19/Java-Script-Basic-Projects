@@ -6,13 +6,39 @@
     <title>
         Rock Paper Scissor
     </title>
-    <script src="logics.js"></script>
+    <script src="scripts/logics.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <b>Current Score</b>
+    <h1>Rock Paper Scissor</h1>
+    <h3 id="greeting_text">Welcome</h3>
+    <script>
+        while (!user_name) {
+            var user_name = prompt('Please enter your name');
+        }
+
+        if (user_name.length != 0) {
+            document.getElementById('greeting_text').innerHTML = `Welcome, ${user_name}`;
+        }
+    </script>
+    <p>Choose your move</p>
+    <button class="user_move" onclick="play('rock')">
+        <img class="choice_move_img" src="assets/images/rock-emoji.png">
+    </button>
+    <button class="user_move" onclick="play('paper')">
+        <img class="choice_move_img" src="assets/images/paper-emoji.png">
+    </button>
+    <button class="user_move" onclick="play('scissor')">
+        <img class="choice_move_img" src="assets/images/scissor-emoji.png">
+    </button>
     <br>
     <br>
+    <p id="js-result_text">Horray!! you win.</p><br>
+    <p id="js-result"><img class="result_move_img" src="assets/images/rock-emoji.png"> : <img class="result_move_img"
+            src="assets/images/rock-emoji.png">Computer`</p>
+    <br>
+    <p><b id="score_heading">Current Score</b></p>
     <div id="js-score">
         <script>
             const score = JSON.parse(localStorage.getItem('score')) || {
@@ -28,27 +54,7 @@
     </div>
     <br>
     <br>
-    <b>Play Now</b>
-    <br>
-    <br>
-    Enter your choice
-    <br>
-    <br>
-    <button onclick="play('rock')">
-        Rock
-    </button>
-    <button onclick="play('paper')">
-        Paper
-    </button>
-    <button onclick="play('scissor')">
-        Scissor
-    </button>
-    <br>
-    <br>
-    <b>Result</b>
-    <p id="js-result">Start playing</p>
-    <br>
-    <button onclick="reset()">
+    <button id="reset_button" onclick="reset()">
         Reset Score
     </button>
 

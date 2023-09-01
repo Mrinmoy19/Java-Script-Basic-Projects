@@ -17,7 +17,7 @@ function generate_computers_choice() {
 function play(users_choice) {
     let computers_choice = generate_computers_choice();
     let winner;
-    let result;
+    let result,result_text;
 
     const score = JSON.parse(localStorage.getItem('score')) || {
         user_score : 0,
@@ -26,8 +26,8 @@ function play(users_choice) {
     };
 
     if (users_choice === computers_choice) {
-        // alert(`You chose ${users_choice} and computer chose ${computers_choice}.\nIt's a tie.\nCurrent Score : You - ${score.user_score} Computer - ${score.computer_score}.`);
-        result = `It's a tie.You chose <b>${users_choice}</b> and computer chose <b>${computers_choice}</b>.`;
+        result_text = `It's a tie.`;
+        result = `&nbsp &nbsp &nbsp &nbsp &nbspYou<img class="result_move_img" src="assets/images/${users_choice}-emoji.png"> : <img class="result_move_img" src="assets/images/${computers_choice}-emoji.png"> Computer`;
         score.tie++;
     }
     else if (users_choice === 'rock') {
@@ -57,20 +57,20 @@ function play(users_choice) {
 
     if (winner === 'you') {
         score.user_score++;
-        // alert(`Horray!! you win.\nYou chose ${users_choice} and computer chose ${computers_choice}.\nCurrent Score : You - ${score.user_score} Computer - ${score.computer_score}.`);
-        result = `Horray!! you win.\nYou chose <b>${users_choice}</b> and computer chose <b>${computers_choice}</b>.`;
+        result_text = `Horray!! you win.`;
+        result = `&nbsp &nbsp &nbsp &nbsp &nbspYou<img class="result_move_img" src="assets/images/${users_choice}-emoji.png"> : <img class="result_move_img" src="assets/images/${computers_choice}-emoji.png">Computer`;
         
     }
     else if(winner === 'computer') {
         score.computer_score++;
-        // alert(`Better luck next time! Computer wins.\nYou chose ${users_choice} and computer chose ${computers_choice}.\nCurrent Score : You - ${score.user_score} Computer - ${score.computer_score}.`);
-        result = `Better luck next time! Computer wins.\nYou chose <b>${users_choice}</b> and computer chose <b>${computers_choice}</b>.`;
+        result_text = `Better luck next time! Computer wins.`;
+        result = `&nbsp &nbsp &nbsp &nbsp &nbspYou<img class="result_move_img" src="assets/images/${users_choice}-emoji.png"> : <img class="result_move_img" src="assets/images/${computers_choice}-emoji.png">Computer`;
         
     }
 
     localStorage.setItem('score',JSON.stringify(score));
     update_score();
-    update_result(result);
+    update_result(result,result_text);
 }
 
 function reset() {
@@ -80,24 +80,11 @@ function reset() {
         computer_score : 0,
         tie : 0
     };
-
-    // alert(`Score reset is successful.\nCurrent Score : You - ${score.user_score} Computer - ${score.computer_score}.`)
-
-    // localStorage.setItem('score',JSON.stringify(score));
     localStorage.removeItem('score');
-
-    update_result('Start Playing Now.');
     update_score();
+    document.querySelector('#js-result').style.visibility ='hidden';
+    document.querySelector('#js-result_text').style.visibility ='hidden';
 }
-
-// function view_score() {
-//     // const score = JSON.parse(localStorage.getItem('score')) || {
-//     //     user_score : 0,
-//     //     computer_score : 0,
-//     //     tie : 0
-//     // };
-//     // alert(`Current Score : You - ${score.user_score} Computer - ${score.computer_score}.`)
-// }
 
 function update_score(){
     const score = JSON.parse(localStorage.getItem('score')) || {
@@ -110,6 +97,10 @@ function update_score(){
     document.querySelector('#js-score').innerHTML = score_string;
 }
 
-function update_result(result_string){
+function update_result(result_string,result_text_string){
+    document.querySelector('#js-result_text').innerHTML = result_text_string;
     document.querySelector('#js-result').innerHTML = result_string;
+    document.querySelector('#js-result').style.visibility ='visible';
+    document.querySelector('#js-result_text').style.visibility ='visible';
+    document.querySelector('#begin_text').hidden = true;
 }
