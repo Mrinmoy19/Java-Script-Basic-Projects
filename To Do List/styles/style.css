@@ -1,0 +1,30 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+button{
+    border-radius: 30px;
+}
+
+#add_task_button{
+    background-color: greenyellow;
+}
+
+#inputs,#todolist{
+    display: grid;
+    grid-template-columns: 300px 150px 150px 100px;
+    margin: 50px 20px;
+}
+
+.input_styles{
+    margin: 10px;
+}
+
+.todolist_styles{
+    margin: 10px;
+}
+
+.delete_task{
+    background-color: rgba(255, 0, 0, 0.600);
+    
+}
