@@ -6,14 +6,16 @@
     <title>
         Rock Paper Scissor
     </title>
-    <script src="scripts/logics.js"></script>
+    <script src="scripts/logics.js" defer></script>
+    <script src="scripts/user_name.js" defer></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
     <h1>Rock Paper Scissor</h1>
     <h3 id="greeting_text">Welcome</h3>
-    <script>
+    <!-- Moved this code to user_name.js and included in head as an async defer script -->
+    <!-- <script>
         while (!user_name) {
             var user_name = prompt('Please enter your name');
         }
@@ -21,15 +23,19 @@
         if (user_name.length != 0) {
             document.getElementById('greeting_text').innerHTML = `Welcome, ${user_name}`;
         }
-    </script>
+    </script> -->
     <p>Choose your move</p>
-    <button class="user_move" onclick="play('rock')">
+    <p>Press R for Rock / P for Paper / S for scissor</p>
+    <!-- <button class="user_move" onclick="play('rock')"> -->
+    <button class="user_move" id="rock_button">
         <img class="choice_move_img" src="assets/images/rock-emoji.png">
     </button>
-    <button class="user_move" onclick="play('paper')">
+    <!-- <button class="user_move" onclick="play('paper')"> -->
+    <button class="user_move" id="paper_button">
         <img class="choice_move_img" src="assets/images/paper-emoji.png">
     </button>
-    <button class="user_move" onclick="play('scissor')">
+    <!-- <button class="user_move" onclick="play('scissor')"> -->
+    <button class="user_move" id="scissor_button">
         <img class="choice_move_img" src="assets/images/scissor-emoji.png">
     </button>
     <br>
@@ -54,7 +60,8 @@
     </div>
     <br>
     <br>
-    <button id="reset_button" onclick="reset()">
+    <!-- <button id="reset_button" onclick="reset()"> -->
+    <button id="reset_button">
         Reset Score
     </button>
 
